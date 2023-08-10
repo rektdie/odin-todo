@@ -2,10 +2,51 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Webpack App</title>
+        <title>Todo app</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch&family=Itim&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script defer src="main.js"></script></head>
     <body>
-        <h1>Test</h1>
+        <header>
+            <div class="header-text">Todo app</div>
+        </header>
+        <div class="project-section">
+            <div class="projects-header">
+                <div class="projects-text">Projects</div>
+                <img id="add-project" src="../src/svgs/Add Circle.svg">
+            </div>
+            <hr>
+            <div class="projects">
+                <button class="project">
+                    <img class="indicator" src="../src/svgs/Ellipse 1.svg">
+                    <div class="project-name">Default</div>
+                </button>
+            </div>
+        </div>
+        <div class="todos">
+            <div class="todo">
+                <div class="todo-title">Wash the car</div>
+                <div class="todo-description">I have to wash the car becuase the doors are very dirty.</div>
+                <div class="todo-date">
+                    <img src="../src/svgs/🦆 icon _calendar 1_.svg">
+                    <div class="todo-dueDate">09/01/2023</div>
+                </div>
+                <div class="todo-actions">
+                    <button class="todo-delete"><img src="../src/svgs/Close Circle.svg"></button>
+                    <button class="todo-priority">Medium</button>
+                    <button class="todo-done"><img src="../src/svgs/Check Circle.svg"></button>
+                </div>
+            </div>
+            <button class="new-todo">
+                <img src="../src/svgs/🦆 icon _add_.svg">
+            </button>
+        </div>
+        <footer>
+            <a href="https://github.com/rektdie" target="_blank"><img src="../src/images/github-mark-white.png" class="github-icon"></a>
+            <div class="footer-text">Made by <span id="author">rektdie</span> for the <span id="odin-project">Odin Project</span></div>
+        </footer>
     </body>
     
 </html>

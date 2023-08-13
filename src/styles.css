@@ -57,6 +57,7 @@ header {
 .projects-header {
     display: flex;
     justify-content: space-between;
+    gap: 40px;
 }
 
 hr {
@@ -80,6 +81,11 @@ hr {
     border: none;
     width: 100%;
     cursor: pointer;
+    transition-duration: 0.05s;
+}
+
+.project:active {
+    transform: translateY(2px) scale(0.98);
 }
 
 .project-name {
@@ -119,6 +125,11 @@ hr {
     transition-duration: 0.5s;
 }
 
+.todo:hover, .new-todo:hover {
+    transform: translateX(5px);
+    box-shadow: 5px 5px 10px 3px rgba(255, 255, 255, 0.25);
+}
+
 .new-todo {
     box-sizing: border-box;
     width: 250px;
@@ -130,6 +141,23 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition-duration: 0.5s;
+    transition-property: box-shadow, transform;
+    cursor: pointer;
+}
+
+.new-todo:active {
+    background-color: #606060;
+}
+
+.todo-actions > button:active, #add-project:active {
+    transform: translateY(2px) scale(0.98);
+}
+
+#add-project {
+    background: none;
+    appearance: none;
+    border: none;
 }
 
 .todo-title {
@@ -163,6 +191,12 @@ hr {
     border: 2.5px solid #1A1818;
     border-radius: 10px;
     width: 163px;
+}
+
+.todo-actions > button {
+    cursor: pointer;
+    transition-duration: 0.2s;
+    transition-property: transform;
 }
 
 .todo-delete, .todo-done {
@@ -243,7 +277,13 @@ footer {
     line-height: normal;
 }
 
-.github-icon {
+#github-icon {
     width: 63px;
     height: 62px;
+    transition-duration: 0.8s;
+    transition-property: all ease-in-out;
+}
+
+#github-icon:hover {
+    transform: rotate(-360deg);
 }

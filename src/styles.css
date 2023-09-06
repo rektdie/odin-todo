@@ -1,3 +1,7 @@
+* {
+    font-family: Inter;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -47,11 +51,16 @@ header {
 
 .projects-text {
     color: #FFF;
-    font-family: Inter;
     font-size: 35px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .projects-header {
@@ -69,7 +78,6 @@ hr {
 
 .project {
     display: flex;
-    fill: #4B4343;
     filter: drop-shadow(0px 7px 4px rgba(0, 0, 0, 0.5));
     background-color: #4B4343;
     height: 40px;
@@ -91,7 +99,6 @@ hr {
 .project-name {
     color: #FFF;
     text-align: center;
-    font-family: Inter;
     font-size: 30px;
     font-style: normal;
     font-weight: 500;
@@ -111,6 +118,13 @@ hr {
     gap: 60px;
     padding-top: 24px;
     padding-left: 40px;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.todos::-webkit-scrollbar {
+    display: none;
 }
 
 .todo {
@@ -123,6 +137,7 @@ hr {
     flex-direction: column;
     justify-content: space-between;
     transition-duration: 0.5s;
+    margin-bottom: 30px;
 }
 
 .todo:hover, .new-todo:hover {
@@ -150,7 +165,7 @@ hr {
     background-color: #606060;
 }
 
-.todo-actions > button:active, #add-project:active {
+.todo-actions > button:active, #add-project:active, .project-button:active {
     transform: translateY(2px) scale(0.98);
 }
 
@@ -158,11 +173,11 @@ hr {
     background: none;
     appearance: none;
     border: none;
+    transition-duration: 0.2s;
 }
 
 .todo-title {
     color: #1A1818;
-    font-family: Inter;
     font-size: 30px;
     font-style: normal;
     font-weight: 700;
@@ -173,7 +188,6 @@ hr {
 .todo-description {
     color: #1A1818;
     text-align: center;
-    font-family: Inter;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
@@ -183,7 +197,6 @@ hr {
 .todo-dueDate {
     color: #1A1818;
     text-align: center;
-    font-family: Inter;
     font-size: 22px;
     font-style: normal;
     font-weight: 500;
@@ -211,7 +224,6 @@ hr {
     height: 41px;
     color: #C6B62C;
     text-align: center;
-    font-family: Inter;
     font-size: 22px;
     font-style: normal;
     font-weight: 700;
@@ -261,7 +273,6 @@ footer {
 
 .footer-text {
     color: #D6D6D6;
-    font-family: Inter;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
@@ -270,7 +281,6 @@ footer {
 
 #author {
     color: #D6D6D6;
-    font-family: Inter;
     font-size: 24px;
     font-style: normal;
     font-weight: 800;
@@ -286,4 +296,71 @@ footer {
 
 #github-icon:hover {
     transform: rotate(-360deg);
+}
+
+.project-modal {
+    border: 3px solid rgb(235, 235, 235);
+    border-radius: 10px;
+    background-color: #666464;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #D6D6D6;
+    gap: 20px;
+    box-shadow: 5px 5px 20px 0px rgba(255, 255, 255, 0.25);
+}
+
+.project-button {
+    width: 150px;
+    height: 50px;
+    appearance: none;
+    border: none;
+    border-bottom: 3px solid #4a4343;;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #FFF;
+    transition-duration: 0.01s;
+    background-color: transparent;
+}
+
+.project-button:hover {
+    background-color: #565252;
+}
+
+.project-modal > h1 {
+    margin-bottom: 0;
+}
+
+.project-modal > h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.6rem;
+}
+
+h2 > input {
+    appearance: none;
+    border: none;
+    width: 130px;
+    height: 30px;
+    padding-left: 8px;
+    background-color: #6a6868;
+    border-bottom: 3px solid #1A1818;
+    color: white;
+    font-size: 1.3rem;
+}
+
+h2 > input::placeholder {
+    color:#928888;
+}
+
+h2 > input:focus {
+    outline: none;
+}
+
+.project-buttons {
+    display: flex;
+    gap: 30px;
 }

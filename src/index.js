@@ -28,17 +28,30 @@ const todo = (title, description, dueDate, priority, finished) => {
     
     const isFinished = () => {
         return finished;
-    }
+    };
 
     const getPriority = () => {
         return priority;
-    }
+    };
 
-    return {done, changePriority, isFinished, getPriority};
+    const getTitle = () => {
+        return title;
+    };
+
+    const getDescription = () => {
+        return description;
+    };
+
+    return {done, changePriority, isFinished, getPriority, getTitle, getDescription};
 };
 
 const project = (name) => {
-    return {name};
+    const todos = [];
+
+    const addTodo = newTodo => {
+        todos.push(newTodo);
+    };
+    return {name, todos, addTodo};
 };
 
 openProjectModal.addEventListener("click", () => {
@@ -52,7 +65,6 @@ cancelProjectButton.addEventListener("click", () => {
 createProjectButton.addEventListener("click", () => {
     if (projectNameInput.value != ""){
         projects.push(project(projectNameInput.value));
-        console.table(projects);
         projectModal.close();
         projectNameInput.value = "";
     

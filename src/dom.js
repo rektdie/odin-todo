@@ -1,5 +1,5 @@
 import "./styles.css";
-import { projects, createProject } from "./index.js";
+import { projects } from "./index.js";
 import indicatorSvg from "./svgs/Ellipse 1.svg";
 import calendarSvg from "./svgs/calendar.svg"
 import deleteSvg from "./svgs/Close Circle.svg";
@@ -13,20 +13,8 @@ const projectsDiv = document.querySelector(".projects");
 
 const projectForm = document.querySelector("#form-project");
 const todoForm = document.querySelector("#form-todo");
-
-
-projectForm.addEventListener("submit", e => {
-    e.preventDefault();
-
-    //Creating new Project with the given title
-    const formData = new FormData(projectForm);
-    createProject(formData.get("title"));
-
-    projectForm.reset();
-    listProjects();
-    projectModal.close();
-});
-
+const cancelProjectButton = document.querySelector(".cancel-project");
+const cancelTodoButton = document.querySelector(".cancel-todo");
 
 projectModalButton.addEventListener("click", () => {
     projectModal.showModal();
@@ -124,6 +112,26 @@ function listTodos(project) {
     newTodo.addEventListener("click", () => {
         todoModal.showModal();
     });
+};
+
+cancelProjectButton.addEventListener("click", () => {
+    projectForm.reset();
+    projectModal.close();
+});
+
+cancelTodoButton.addEventListener("click", () => {
+    todoForm.reset();
+    todoModal.close();
+});
+
+function closeProjectForm() {
+    projectForm.reset();
+    projectModal.close();
 }
 
-export { listTodos, listProjects };
+function closeTodoForm() {
+    todoForm.reset();
+    todoModal.close();
+}
+
+export { listTodos, listProjects, projectForm, todoForm, closeProjectForm, closeTodoForm };

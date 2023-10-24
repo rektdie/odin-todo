@@ -1,7 +1,10 @@
-import { listProjects, listTodos} from "./dom";
+import { listProjects, listTodos, projectForm, todoForm, closeProjectForm, closeTodoForm } from "./dom";
+import { format } from "date-fns";
  
 let projects = [];
 listProjects();
+
+let currentProject = 0;
 
 const todo = (title, description, dueDate, priority, finished) => {
     const done = () => {
@@ -50,8 +53,47 @@ const project = (name) => {
     return {name, todos, addTodo};
 };
 
-function createProject(title){
+function createProject(title) {
     projects.push(project(title));
 }
 
-export { projects, createProject };
+projectForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const formData = new FormData(projectForm);
+
+    const projectTitles = projects.map(project => project.name);
+    const newProjectTitle = formData.get("title");
+
+    // Checking if project already exists or not
+    if (!projectTitles.includes(newProjectTitle) && newProjectTitle !== ""){
+        createProject(newProjectTitle);
+
+        closeProjectForm();
+        listProjects();
+
+        const lastProject = projects[projects.length-1];
+        listTodos(lastProject);
+        currentProject = projects.length-1;
+    }
+});
+
+todoForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const formData = new FormData(todoForm);
+    const myNewTodo = todo(
+        formData.get("title"),
+        formData.get("description"),
+        format(new Date(formData.get("dueDate")), "yyyy/MM/dd"),
+        formData.get("priority"),
+        false
+    );
+
+    projects[currentProject].addTodo(myNewTodo);
+
+    closeTodoForm();
+    listTodos(projects[currentProject]);
+});
+
+export { projects };

@@ -1,15 +1,7 @@
-import "./styles.css";
-import indicatorSvg from "./svgs/Ellipse 1.svg"
-
-const projectModal = document.querySelector(".project-modal");
-const openProjectModal = document.querySelector("#add-project");
-const createProjectButton = document.querySelector(".create-project");
-const cancelProjectButton = document.querySelector(".cancel-project");
-const projectNameInput = document.querySelector("#project-name");
-const projectsDiv = document.querySelector(".projects");
-
+import { listProjects, listTodos} from "./dom";
+ 
 let projects = [];
-renderProjects();
+listProjects();
 
 const todo = (title, description, dueDate, priority, finished) => {
     const done = () => {
@@ -42,7 +34,11 @@ const todo = (title, description, dueDate, priority, finished) => {
         return description;
     };
 
-    return {done, changePriority, isFinished, getPriority, getTitle, getDescription};
+    const getDueDate = () => {
+        return dueDate;
+    };
+
+    return {done, changePriority, isFinished, getPriority, getTitle, getDescription, getDueDate};
 };
 
 const project = (name) => {
@@ -54,41 +50,8 @@ const project = (name) => {
     return {name, todos, addTodo};
 };
 
-openProjectModal.addEventListener("click", () => {
-    projectModal.showModal();
-});
+function createProject(title){
+    projects.push(project(title));
+}
 
-cancelProjectButton.addEventListener("click", () => {
-    projectModal.close();
-});
-
-createProjectButton.addEventListener("click", () => {
-    if (projectNameInput.value != ""){
-        projects.push(project(projectNameInput.value));
-        projectModal.close();
-        projectNameInput.value = "";
-    
-        renderProjects();
-    }
-});
-
-function renderProjects() {
-    projectsDiv.innerHTML = "";
-    projects.forEach(project => {
-        const newProject = document.createElement("button");
-        newProject.classList.add("project");
-
-        const indicator = document.createElement("img");
-        indicator.classList.add("indicator");
-        indicator.setAttribute("src", indicatorSvg);
-
-        const projectName = document.createElement("div");
-        projectName.classList.add("project-name");
-        projectName.textContent = project.name;
-
-        newProject.appendChild(indicator);
-        newProject.appendChild(projectName);
-
-        projectsDiv.appendChild(newProject);
-    });
-};
+export { projects, createProject };

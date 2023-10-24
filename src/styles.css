@@ -298,7 +298,7 @@ footer {
     transform: rotate(-360deg);
 }
 
-.project-modal {
+.project-modal, .todo-modal {
     border: 3px solid rgb(235, 235, 235);
     border-radius: 10px;
     background-color: #666464;

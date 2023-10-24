@@ -22,33 +22,31 @@
             </div>
         </div>
         <div class="todos">
-            <div class="todo">
-                <div class="todo-title">Wash the car</div>
-                <div class="todo-description">I have to wash the car becuase the doors are very dirty.</div>
-                <div class="todo-date">
-                    <img src="../src/svgs/🦆 icon _calendar 1_.svg">
-                    <div class="todo-dueDate">09/01/2023</div>
-                </div>
-                <div class="todo-actions">
-                    <button class="todo-delete"><img src="../src/svgs/Close Circle.svg"></button>
-                    <button class="todo-priority">Medium</button>
-                    <button class="todo-done"><img src="../src/svgs/Check Circle.svg"></button>
-                </div>
-            </div>
-            <button class="new-todo">
-                <img src="../src/svgs/🦆 icon _add_.svg">
-            </button>
-            <dialog class="project-modal">
-                <div class="modal-container">
-                    <h1>Create your new project</h1>
-                    <h2>Name: <input id="project-name" type="text" placeholder="today""></h2>
-                    <div class="project-buttons">
-                        <button class="cancel-project project-button">Cancel</button>
-                        <button class="create-project project-button">Create</button>
-                    </div>
-                </div>
-            </dialog>
+            
         </div>
+        <dialog class="project-modal">
+            <form class="modal-container" id="form-project">
+                <h1>Create your new project</h1>
+                <h2>Name: <input id="project-name" type="text" placeholder="today" name="title"></h2>
+                <div class="project-buttons">
+                    <button type="button" class="cancel-todo project-button">Cancel</button>
+                    <button type="submit" class="create-todo project-button">Create</button>
+                </div>
+            </form>
+        </dialog>
+        <dialog class="todo-modal">
+            <form class="modal-container" id="form-todo">
+                <h1>Create your new todo</h1>
+                <h2>Title: <input id="project-name" type="text" placeholder="Clean the room"></h2>
+                <h2>Description: <input id="project-name" type="text"></h2>
+                <h2>Date: <input id="project-name" type="date"></h2>
+                <h2>Priority: <input id="project-name" type=""></h2>
+                <div class="project-buttons">
+                    <button class="cancel-project project-button">Cancel</button>
+                    <button type="submit" class="create-project project-button">Create</button>
+                </div>
+            </form>
+        </dialog>
         <footer>
             <a href="https://github.com/rektdie" target="_blank"><img src="../src/images/github-mark-white.png" id="github-icon"></a>
             <div class="footer-text">Made by <span id="author">rektdie</span> for the <span id="odin-project">Odin Project</span></div>

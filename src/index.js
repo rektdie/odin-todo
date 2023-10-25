@@ -89,7 +89,7 @@ todoForm.addEventListener("submit", e => {
     const myNewTodo = todo(
         formData.get("title"),
         formData.get("description"),
-        format(new Date(formData.get("dueate")), "yyy/M/dd"),
+        format(new Date(formData.get("dueDate")), "yyyy/MM/dd"),
         formData.get("priority"),
         false
     );

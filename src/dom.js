@@ -1,5 +1,5 @@
 import "./styles.css";
-import { projects } from "./index.js";
+import { projects, currentProject, setCurrentProject } from "./index.js";
 import indicatorSvg from "./svgs/Ellipse 1.svg";
 import calendarSvg from "./svgs/calendar.svg"
 import deleteSvg from "./svgs/Close Circle.svg";
@@ -26,18 +26,29 @@ function listProjects() {
         const newProject = document.createElement("button");
         newProject.classList.add("project");
 
-        const indicator = document.createElement("img");
-        indicator.classList.add("indicator");
-        indicator.setAttribute("src", indicatorSvg);
+        if (project == projects[currentProject]) {
+
+            const indicator = document.createElement("img");
+            indicator.classList.add("indicator");
+            indicator.setAttribute("src", indicatorSvg);
+
+            newProject.appendChild(indicator);
+        }
 
         const projectName = document.createElement("div");
         projectName.classList.add("project-name");
         projectName.textContent = project.name;
-
-        newProject.appendChild(indicator);
+        
         newProject.appendChild(projectName);
 
         projectsDiv.appendChild(newProject);
+
+        const projectNames = projects.map(project => project.name);
+        newProject.addEventListener("click", () => {
+            setCurrentProject(projectNames.indexOf(newProject.textContent));
+            listProjects();
+            listTodos(projects[currentProject]);
+        });
     });
 };
 

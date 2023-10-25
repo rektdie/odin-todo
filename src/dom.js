@@ -26,14 +26,18 @@ function listProjects() {
         const newProject = document.createElement("button");
         newProject.classList.add("project");
 
+        const indicatorDiv = document.createElement("div");
+        indicatorDiv.classList.add("indicatorDiv");
         if (project == projects[currentProject]) {
 
             const indicator = document.createElement("img");
             indicator.classList.add("indicator");
             indicator.setAttribute("src", indicatorSvg);
 
-            newProject.appendChild(indicator);
+            indicatorDiv.appendChild(indicator);
         }
+
+        newProject.appendChild(indicatorDiv);
 
         const projectName = document.createElement("div");
         projectName.classList.add("project-name");

@@ -369,3 +369,11 @@ h2 > input:focus {
     display: flex;
     gap: 30px;
 }
+
+.indicatorDiv {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -6,6 +6,10 @@ listProjects();
 
 let currentProject = 0;
 
+function setCurrentProject(value) {
+    currentProject = value;
+}
+
 const todo = (title, description, dueDate, priority, finished) => {
     const done = () => {
         finished = true;
@@ -68,13 +72,13 @@ projectForm.addEventListener("submit", e => {
     // Checking if project already exists or not
     if (!projectTitles.includes(newProjectTitle) && newProjectTitle !== ""){
         createProject(newProjectTitle);
+        currentProject = projects.length-1;
 
         closeProjectForm();
         listProjects();
 
         const lastProject = projects[projects.length-1];
         listTodos(lastProject);
-        currentProject = projects.length-1;
     }
 });
 
@@ -85,7 +89,7 @@ todoForm.addEventListener("submit", e => {
     const myNewTodo = todo(
         formData.get("title"),
         formData.get("description"),
-        format(new Date(formData.get("dueDate")), "yyyy/MM/dd"),
+        format(new Date(formData.get("dueate")), "yyy/M/dd"),
         formData.get("priority"),
         false
     );
@@ -96,4 +100,5 @@ todoForm.addEventListener("submit", e => {
     listTodos(projects[currentProject]);
 });
 
-export { projects };
+
+export { projects, currentProject, setCurrentProject };

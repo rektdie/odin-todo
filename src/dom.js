@@ -120,10 +120,19 @@ function listTodos(project) {
         todoDeleteButton.addEventListener("click", () => {
             const listedTodos = document.querySelectorAll(".todo");
             const selectedTodo = todoDeleteButton.parentElement.parentElement;
-            const indexToDelete = Array.from(listedTodos).indexOf(selectedTodo);
+            const todoIndex = Array.from(listedTodos).indexOf(selectedTodo);
 
-            projects[currentProject].delTodo(indexToDelete);
+            projects[currentProject].delTodo(todoIndex);
             listTodos(projects[currentProject]);
+        });
+
+        todoPriorityButton.addEventListener("click", () => {
+            const listedTodos = document.querySelectorAll(".todo");
+            const selectedTodo = todoDeleteButton.parentElement.parentElement;
+            const todoIndex = Array.from(listedTodos).indexOf(selectedTodo);
+            
+            projects[currentProject].todos[todoIndex].changePriority();
+            todoPriorityButton.textContent = projects[currentProject].todos[todoIndex].getPriority();
         });
     });
     const newTodo = document.createElement("button");

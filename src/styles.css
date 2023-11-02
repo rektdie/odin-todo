@@ -114,7 +114,7 @@ hr {
 
 .todos {
     display: grid;
-    grid-template-columns: repeat(4, 250px);
+    grid-template-columns: repeat(auto-fit, 250px);
     gap: 60px;
     padding-top: 24px;
     padding-left: 40px;
@@ -376,4 +376,16 @@ h2 > input:focus {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.requiredSign {
+    color: #C6B62C;
+}
+
+select {
+    border: none;
+    background-color: #6a6868;
+    border-bottom: 3px solid #1A1818;
+    color: white;
+    font-size: 1.3rem;
 }

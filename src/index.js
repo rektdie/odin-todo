@@ -54,7 +54,11 @@ const project = (name) => {
     const addTodo = newTodo => {
         todos.push(newTodo);
     };
-    return {name, todos, addTodo};
+
+    const delTodo = index => {
+        todos.splice(index, 1);
+    };
+    return {name, todos, addTodo, delTodo};
 };
 
 function createProject(title) {
@@ -70,7 +74,7 @@ projectForm.addEventListener("submit", e => {
     const newProjectTitle = formData.get("title");
 
     // Checking if project already exists or not
-    if (!projectTitles.includes(newProjectTitle) && newProjectTitle !== ""){
+    if (!projectTitles.includes(newProjectTitle)){
         createProject(newProjectTitle);
         currentProject = projects.length-1;
 

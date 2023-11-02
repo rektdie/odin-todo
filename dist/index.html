@@ -27,7 +27,7 @@
         <dialog class="project-modal">
             <form class="modal-container" id="form-project">
                 <h1>Create your new project</h1>
-                <h2>Name: <input id="project-name" type="text" placeholder="today" name="title"></h2>
+                <h2>Name:<span class="requiredSign">*</span> <input id="project-name" type="text" placeholder="today" name="title" required></h2>
                 <div class="project-buttons">
                     <button type="button" class="cancel-project project-button">Cancel</button>
                     <button type="submit" class="create-project project-button">Create</button>
@@ -37,9 +37,9 @@
         <dialog class="todo-modal">
             <form class="modal-container" id="form-todo">
                 <h1>Create your new todo</h1>
-                <h2>Title: <input id="todo-title" type="text" name="title" title placeholder="Cleaning"></h2>
+                <h2>Title:<span class="requiredSign">*</span> <input id="todo-title" type="text" name="title" title placeholder="Cleaning" required></h2>
                 <h2>Description: <input id="todo-description" name="description" type="text"></h2>
-                <h2>Date: <input id="todo-date" name="dueDate" type="date"></h2>
+                <h2>Date<span class="requiredSign">*</span>: <input id="todo-date" name="dueDate" type="date" required></h2>
                 <h2>Priority:
                     <select id="todo-priority" name="priority">
                         <option value="Low">Low</option>

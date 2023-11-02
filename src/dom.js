@@ -102,7 +102,9 @@ function listTodos(project) {
         doneIcon.setAttribute("src", doneSvg);
 
         todoDiv.appendChild(todoTitle);
-        todoDiv.appendChild(todoDescription);
+        if (todo.getDescription() !== "") {
+            todoDiv.appendChild(todoDescription);
+        }
         todoDiv.appendChild(todoDate);
         todoDate.appendChild(dateImage);
         todoDate.appendChild(todoDueDate);
@@ -115,9 +117,18 @@ function listTodos(project) {
 
         todosDiv.appendChild(todoDiv);
 
+        todoDeleteButton.addEventListener("click", () => {
+            const listedTodos = document.querySelectorAll(".todo");
+            const selectedTodo = todoDeleteButton.parentElement.parentElement;
+            const indexToDelete = Array.from(listedTodos).indexOf(selectedTodo);
+
+            projects[currentProject].delTodo(indexToDelete);
+            listTodos(projects[currentProject]);
+        });
     });
     const newTodo = document.createElement("button");
     newTodo.classList.add("new-todo");
+    newTodo.classList.add("todo");
     const newTodoImage = document.createElement("img");
     newTodoImage.setAttribute("src", newTodoSvg);
 

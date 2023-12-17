@@ -1,61 +1,68 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Todo app</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch&family=Itim&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script defer src="main.js"></script></head>
-    <body>
-        <header>
-            <div class="header-text">Todo app</div>
-        </header>
-        <div class="project-section">
-            <div class="projects-header">
-                <div class="projects-text">Projects</div>
-                <button id="add-project"><img src="../src/svgs/Add Circle.svg"></button>
-            </div>
-            <hr>
-            <div class="projects">
-            </div>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Todo app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch&family=Itim&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script defer src="main.js"></script></head>
+
+<body>
+    <header>
+        <div class="header-text">Todo app</div>
+    </header>
+    <div class="project-section">
+        <div class="projects-header">
+            <div class="projects-text">Projects</div>
+            <button id="add-project"><img src="../src/svgs/Add Circle.svg"></button>
         </div>
-        <div class="todos">
-            
+        <hr>
+        <div class="projects">
         </div>
-        <dialog class="project-modal">
-            <form class="modal-container" id="form-project">
-                <h1>Create your new project</h1>
-                <h2>Name:<span class="requiredSign">*</span> <input id="project-name" type="text" placeholder="today" name="title" required></h2>
-                <div class="project-buttons">
-                    <button type="button" class="cancel-project project-button">Cancel</button>
-                    <button type="submit" class="create-project project-button">Create</button>
-                </div>
-            </form>
-        </dialog>
-        <dialog class="todo-modal">
-            <form class="modal-container" id="form-todo">
-                <h1>Create your new todo</h1>
-                <h2>Title:<span class="requiredSign">*</span> <input id="todo-title" type="text" name="title" title placeholder="Cleaning" required></h2>
-                <h2>Description: <input id="todo-description" name="description" type="text"></h2>
-                <h2>Date<span class="requiredSign">*</span>: <input id="todo-date" name="dueDate" type="date" required></h2>
-                <h2>Priority:
-                    <select id="todo-priority" name="priority">
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                    </select>
-                </h2>
-                <div class="project-buttons">
-                    <button type="button" class="cancel-todo project-button">Cancel</button>
-                    <button type="submit" class="create-todo project-button">Create</button>
-                </div>
-            </form>
-        </dialog>
-        <footer>
-            <a href="https://github.com/rektdie" target="_blank"><img src="../src/images/github-mark-white.png" id="github-icon"></a>
-            <div class="footer-text">Made by <span id="author">rektdie</span> for the <span id="odin-project">Odin Project</span></div>
-        </footer>
-    </body>
+    </div>
+    <div class="todos">
+
+    </div>
+    <dialog class="project-modal">
+        <form class="modal-container" id="form-project">
+            <h1>Create your new project</h1>
+            <h2>Name:<span class="requiredSign">*</span> <input id="project-name" type="text" placeholder="today"
+                    name="title" required></h2>
+            <div class="project-buttons">
+                <button type="button" class="cancel-project project-button">Cancel</button>
+                <button type="submit" class="create-project project-button">Create</button>
+            </div>
+        </form>
+    </dialog>
+    <dialog class="todo-modal">
+        <form class="modal-container" id="form-todo">
+            <h1>Create your new todo</h1>
+            <h2>Title:<span class="requiredSign">*</span> <input id="todo-title" type="text" name="title" title
+                    placeholder="Cleaning" required></h2>
+            <h2>Description: <input id="todo-description" name="description" type="text"></h2>
+            <h2>Date<span class="requiredSign">*</span>: <input id="todo-date" name="dueDate" type="date" required></h2>
+            <h2>Priority:
+                <select id="todo-priority" name="priority">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </h2>
+            <div class="project-buttons">
+                <button type="button" class="cancel-todo project-button">Cancel</button>
+                <button type="submit" class="create-todo project-button">Create</button>
+            </div>
+        </form>
+    </dialog>
+    <footer>
+        <a href="https://github.com/rektdie" target="_blank"><img src="../src/images/github-mark-white.png"
+                id="github-icon"></a>
+        <div class="footer-text">Made by <span id="author">rektdie</span> for the <span id="odin-project">Odin
+                Project</span></div>
+    </footer>
+</body>
+
 </html>

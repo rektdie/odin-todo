@@ -138,9 +138,12 @@ hr {
     justify-content: space-between;
     transition-duration: 0.5s;
     margin-bottom: 30px;
+    box-sizing: border-box;
+    transition-property: transform, box-shadow;
 }
 
-.todo:hover, .new-todo:hover {
+.todo:hover,
+.new-todo:hover {
     transform: translateX(5px);
     box-shadow: 5px 5px 10px 3px rgba(255, 255, 255, 0.25);
 }
@@ -165,7 +168,9 @@ hr {
     background-color: #606060;
 }
 
-.todo-actions > button:active, #add-project:active, .project-button:active {
+.todo-actions>button:active,
+#add-project:active,
+.project-button:active {
     transform: translateY(2px) scale(0.98);
 }
 
@@ -206,13 +211,14 @@ hr {
     width: 163px;
 }
 
-.todo-actions > button {
+.todo-actions>button {
     cursor: pointer;
     transition-duration: 0.2s;
     transition-property: transform;
 }
 
-.todo-delete, .todo-done {
+.todo-delete,
+.todo-done {
     appearance: none;
     border: none;
     background: none;
@@ -298,7 +304,8 @@ footer {
     transform: rotate(-360deg);
 }
 
-.project-modal, .todo-modal {
+.project-modal,
+.todo-modal {
     border: 3px solid rgb(235, 235, 235);
     border-radius: 10px;
     background-color: #666464;
@@ -321,7 +328,8 @@ footer {
     height: 50px;
     appearance: none;
     border: none;
-    border-bottom: 3px solid #4a4343;;
+    border-bottom: 3px solid #4a4343;
+    ;
     font-size: 1.8rem;
     cursor: pointer;
     color: #FFF;
@@ -333,11 +341,11 @@ footer {
     background-color: #565252;
 }
 
-.project-modal > h1 {
+.project-modal>h1 {
     margin-bottom: 0;
 }
 
-.project-modal > h2 {
+.project-modal>h2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -345,7 +353,7 @@ footer {
     font-size: 1.6rem;
 }
 
-h2 > input {
+h2>input {
     appearance: none;
     border: none;
     width: 130px;
@@ -357,11 +365,11 @@ h2 > input {
     font-size: 1.3rem;
 }
 
-h2 > input::placeholder {
-    color:#928888;
+h2>input::placeholder {
+    color: #928888;
 }
 
-h2 > input:focus {
+h2>input:focus {
     outline: none;
 }
 
@@ -388,4 +396,8 @@ select {
     border-bottom: 3px solid #1A1818;
     color: white;
     font-size: 1.3rem;
+}
+
+.finished {
+    border: 3px solid rgb(85, 188, 85);
 }

@@ -42,7 +42,7 @@ function listProjects() {
         const projectName = document.createElement("div");
         projectName.classList.add("project-name");
         projectName.textContent = project.name;
-        
+
         newProject.appendChild(projectName);
 
         projectsDiv.appendChild(newProject);
@@ -63,6 +63,10 @@ function listTodos(project) {
     project.todos.forEach(todo => {
         const todoDiv = document.createElement("div");
         todoDiv.classList.add("todo");
+
+        if (todo.isFinished()) {
+            todoDiv.classList.add("finished");
+        }
 
         const todoTitle = document.createElement("div");
         todoTitle.classList.add("todo-title");
@@ -118,21 +122,21 @@ function listTodos(project) {
         todosDiv.appendChild(todoDiv);
 
         todoDeleteButton.addEventListener("click", () => {
-            const listedTodos = document.querySelectorAll(".todo");
-            const selectedTodo = todoDeleteButton.parentElement.parentElement;
-            const todoIndex = Array.from(listedTodos).indexOf(selectedTodo);
-
-            projects[currentProject].delTodo(todoIndex);
+            projects[currentProject].delTodo(todo);
             listTodos(projects[currentProject]);
         });
 
         todoPriorityButton.addEventListener("click", () => {
-            const listedTodos = document.querySelectorAll(".todo");
-            const selectedTodo = todoDeleteButton.parentElement.parentElement;
-            const todoIndex = Array.from(listedTodos).indexOf(selectedTodo);
-            
-            projects[currentProject].todos[todoIndex].changePriority();
-            todoPriorityButton.textContent = projects[currentProject].todos[todoIndex].getPriority();
+            todo.changePriority();
+            todoPriorityButton.textContent = todo.getPriority();
+        });
+        todoDoneButton.addEventListener("click", () => {
+            todo.done();
+            if (todo.isFinished()) {
+                todoDiv.classList.add("finished");
+            } else {
+                todoDiv.classList.remove("finished");
+            }
         });
     });
     const newTodo = document.createElement("button");

@@ -1,6 +1,6 @@
 import { listProjects, listTodos, projectForm, todoForm, closeProjectForm, closeTodoForm } from "./dom";
 import { format } from "date-fns";
- 
+
 let projects = [];
 listProjects();
 
@@ -12,7 +12,11 @@ function setCurrentProject(value) {
 
 const todo = (title, description, dueDate, priority, finished) => {
     const done = () => {
-        finished = true;
+        if (finished) {
+            finished = false;
+        } else {
+            finished = true;
+        }
     };
 
     const changePriority = () => {
@@ -23,8 +27,17 @@ const todo = (title, description, dueDate, priority, finished) => {
         } else {
             priority = "Low";
         }
+        const changePriority = () => {
+            if (priority === "Low") {
+                priority = "Medium";
+            } else if (priority === "Medium") {
+                priority = "High"
+            } else {
+                priority = "Low";
+            }
+        };
     };
-    
+
     const isFinished = () => {
         return finished;
     };
@@ -45,7 +58,7 @@ const todo = (title, description, dueDate, priority, finished) => {
         return dueDate;
     };
 
-    return {done, changePriority, isFinished, getPriority, getTitle, getDescription, getDueDate};
+    return { done, changePriority, isFinished, getPriority, getTitle, getDescription, getDueDate };
 };
 
 const project = (name) => {
@@ -55,10 +68,10 @@ const project = (name) => {
         todos.push(newTodo);
     };
 
-    const delTodo = index => {
-        todos.splice(index, 1);
+    const delTodo = todo => {
+        todos.splice(todos.indexOf(todo), 1);
     };
-    return {name, todos, addTodo, delTodo};
+    return { name, todos, addTodo, delTodo };
 };
 
 function createProject(title) {
@@ -74,14 +87,14 @@ projectForm.addEventListener("submit", e => {
     const newProjectTitle = formData.get("title");
 
     // Checking if project already exists or not
-    if (!projectTitles.includes(newProjectTitle)){
+    if (!projectTitles.includes(newProjectTitle)) {
         createProject(newProjectTitle);
-        currentProject = projects.length-1;
+        currentProject = projects.length - 1;
 
         closeProjectForm();
         listProjects();
 
-        const lastProject = projects[projects.length-1];
+        const lastProject = projects[projects.length - 1];
         listTodos(lastProject);
     }
 });

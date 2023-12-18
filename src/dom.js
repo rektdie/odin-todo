@@ -5,6 +5,7 @@ import calendarSvg from "./svgs/calendar.svg"
 import deleteSvg from "./svgs/Close Circle.svg";
 import doneSvg from "./svgs/Check Circle.svg";
 import newTodoSvg from "./svgs/todo image.svg";
+const { compareAsc, parse } = require('date-fns');
 
 const projectModal = document.querySelector(".project-modal");
 const todoModal = document.querySelector(".todo-modal");
@@ -60,7 +61,21 @@ function listTodos(project) {
     const todosDiv = document.querySelector(".todos");
     todosDiv.innerHTML = "";
 
-    project.todos.forEach(todo => {
+    const sortedTodos = project.todos.sort((a, b) => {
+        if (a.isFinished() && !b.isFinished()) {
+            return -1;
+        }
+        if (!a.isFinished() && b.isFinished()) {
+            return 1;
+        }
+
+        const dateA = parse(a.getDueDate(), 'yyyy/MM/dd', new Date());
+        const dateB = parse(b.getDueDate(), 'yyyy/MM/dd', new Date());
+
+        return compareAsc(dateA, dateB);
+    });
+
+    sortedTodos.forEach(todo => {
         const todoDiv = document.createElement("div");
         todoDiv.classList.add("todo");
 
@@ -137,6 +152,7 @@ function listTodos(project) {
             } else {
                 todoDiv.classList.remove("finished");
             }
+            listTodos(projects[currentProject]);
         });
     });
     const newTodo = document.createElement("button");

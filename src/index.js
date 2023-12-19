@@ -4,7 +4,7 @@ import { format } from "date-fns";
 let projects = [];
 listProjects();
 
-let currentProject = 0;
+let currentProject = -1;
 
 function setCurrentProject(value) {
     currentProject = value;
@@ -78,6 +78,10 @@ function createProject(title) {
     projects.push(project(title));
 }
 
+function deleteProject(index) {
+    projects.splice(index, 1);
+}
+
 projectForm.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -118,4 +122,4 @@ todoForm.addEventListener("submit", e => {
 });
 
 
-export { projects, currentProject, setCurrentProject };
+export { projects, currentProject, setCurrentProject, deleteProject };

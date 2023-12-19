@@ -1,5 +1,5 @@
 import "./styles.css";
-import { projects, currentProject, setCurrentProject } from "./index.js";
+import { projects, currentProject, setCurrentProject, deleteProject } from "./index.js";
 import indicatorSvg from "./svgs/Ellipse 1.svg";
 import calendarSvg from "./svgs/calendar.svg"
 import deleteSvg from "./svgs/Close Circle.svg";
@@ -10,6 +10,7 @@ const { compareAsc, parse } = require('date-fns');
 const projectModal = document.querySelector(".project-modal");
 const todoModal = document.querySelector(".todo-modal");
 const projectModalButton = document.querySelector("#add-project");
+const deleteProjectButton = document.querySelector("#delete-project");
 const projectsDiv = document.querySelector(".projects");
 
 const projectForm = document.querySelector("#form-project");
@@ -19,6 +20,23 @@ const cancelTodoButton = document.querySelector(".cancel-todo");
 
 projectModalButton.addEventListener("click", () => {
     projectModal.showModal();
+});
+
+deleteProjectButton.addEventListener("click", () => {
+    if (currentProject => 0) {
+        deleteProject(currentProject);
+
+        if (projects[currentProject + 1]) {
+            setCurrentProject(currentProject + 1);
+        } else if (projects[currentProject - 1]) {
+            setCurrentProject(currentProject - 1);
+        } else {
+            setCurrentProject(0);
+        }
+
+        listProjects();
+        listTodos(projects[currentProject]);
+    }
 });
 
 function listProjects() {

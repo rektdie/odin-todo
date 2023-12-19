@@ -66,7 +66,7 @@ header {
 .projects-header {
     display: flex;
     justify-content: space-between;
-    gap: 40px;
+    gap: 15px;
 }
 
 hr {
@@ -170,11 +170,13 @@ hr {
 
 .todo-actions>button:active,
 #add-project:active,
+#delete-project:active,
 .project-button:active {
     transform: translateY(2px) scale(0.98);
 }
 
-#add-project {
+#add-project,
+#delete-project {
     background: none;
     appearance: none;
     border: none;
@@ -374,6 +376,10 @@ h2>input:focus {
 }
 
 .project-buttons {
+    display: flex;
+}
+
+.project-create-buttons {
     display: flex;
     gap: 30px;
 }

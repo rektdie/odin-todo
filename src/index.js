@@ -2,13 +2,25 @@ import { listProjects, listTodos, projectForm, todoForm, closeProjectForm, close
 import { format } from "date-fns";
 
 let projects = [];
-listProjects();
-
 let currentProject = -1;
+
+if (localStorage.getItem("projects")) {
+    projects = JSON.parse(localStorage.getItem("projects"));
+    currentProject = localStorage.getItem("currentProject");
+    listProjects();
+    //listTodos(currentProject);
+}
+
+function saveProjects() {
+    localStorage.setItem("projects", JSON.stringify(projects));
+    localStorage.setItem("currentProject", currentProject);
+}
 
 function setCurrentProject(value) {
     currentProject = value;
 }
+
+window.addEventListener("beforeunload", saveProjects)
 
 const todo = (title, description, dueDate, priority, finished) => {
     const done = () => {
